@@ -7,11 +7,15 @@ test("displays image for each scoop from the server", async () => {
 
   //find images
   const scoopImages = await screen.findAllByRole("img", { name: /scoop$/i });
-  expect(scoopImages).toHaveLength(2);
+  expect(scoopImages).toHaveLength(3);
 
   //confirm alt text of images
   const altText = scoopImages.map((el) => el.alt);
-  expect(altText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
+  expect(altText).toEqual([
+    "Chocolate scoop",
+    "Vanilla scoop",
+    "Mint chip scoop",
+  ]);
 });
 
 test("display image for ech topping from the server", async () => {
