@@ -1,4 +1,4 @@
--- Create a new user and grant priveliges
+-- grant priveliges to admin
 GRANT ALL PRIVILEGES ON DATABASE ecommercedatabase TO admin;
 -- CREATE TABLE 
 DROP TABLE IF EXISTS products;
