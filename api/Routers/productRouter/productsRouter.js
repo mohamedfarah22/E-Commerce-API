@@ -13,4 +13,4 @@ router.get('/:id', db.getProductById)
 
 router.get('/', db.getProductsByCategory)
 
-
+module.exports = router;
