@@ -2,10 +2,10 @@ const Pool = require('pg').Pool;
 
 const pool = new Pool({
     user:"admin",
-    host: "172.17.0.2",
+    password: "ecommdb",
+    host: "0.0.0.0",
     database: "ecommercedatabase",
-    password: 'ecommdb',
-    port: 5432
+    port: 5433
 });
 
 // get all products
@@ -22,7 +22,7 @@ const getProducts = (req, res) => {
 //get product by id
 
 const getProductById = (req, res) => {
-    const id = req.params.id
+    const id =  parseInt(req.params.id);
     pool.query('SELECT * FROM products WHERE id=$1', [id], (error, results) => {
         if(error){
             throw(error)
