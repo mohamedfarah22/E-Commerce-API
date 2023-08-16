@@ -17,6 +17,8 @@ router.get('/', db.getProductsByCategory)
 router.post('/', db.createProduct)
 
 //updated existing product
-router.update('/:id', db.updateProduct)
+router.put('/:id', db.updateProduct)
 
+//delete existing product
+router.delete('/:id', db.deleteProduct)
 module.exports = router;
