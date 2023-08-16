@@ -66,7 +66,7 @@ const updateProduct = (req, res) => {
     const {product_description, price, available_quantity} = req.query;
 
     pool.query(
-        'UPDATE products SET product_description=$1, price=$2, available_quantity=$3 WHERE id=$4', [product_description, price, available_quantity], (error, results) => {
+        'UPDATE products SET product_description=$1, price=$2, available_quantity=$3 WHERE id=$4', [product_description, price, available_quantity, id], (error, results) => {
            if(error){
             throw error
            } 
@@ -75,11 +75,22 @@ const updateProduct = (req, res) => {
     )
 
 }
-
+//delete existing product
+const deleteProduct = (req, res) => {
+    const id = parseInt(req.params.id)
+    
+    pool.query('DELETE FROM products WHERE id=$1', [id], (error, results) => {
+        if(error){
+            throw error
+        }
+        res.status(200).send(`Product deleted with ID: ${id}`)
+    })
+}
 module.exports ={
     getProducts,
     getProductById,
     getProductsByCategory,
     createProduct, 
-    updateProduct
+    updateProduct,
+    deleteProduct
 }
