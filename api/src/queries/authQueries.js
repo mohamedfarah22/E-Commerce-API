@@ -1,5 +1,5 @@
 const Pool = require('pg').Pool;
-const bcrypt = require('bcrypt.js')
+const bcrypt = require('bcryptjs')
 const pool = new Pool({
     user:"admin",
     password: "ecommdb",
@@ -33,7 +33,7 @@ const createUser = async (req, res) => {
         if(error){
             throw error
         }
-        res.status(201).send(`User added with ID: ${results.rows.id[0]}`)
+        res.status(201).send(`User added with ID: ${results.rows[0].id}`)
     })
     
 }
