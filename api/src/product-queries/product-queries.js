@@ -60,7 +60,7 @@ const createProduct = (req, res) => {
     
 }
 
-//update existing product
+//update existing product (allowed functionality only for updated description, price and available_quantity)
 const updateProduct = (req, res) => {
     const id = parseInt(req.params.id)
     const {product_description, price, available_quantity} = req.query;
@@ -80,5 +80,6 @@ module.exports ={
     getProducts,
     getProductById,
     getProductsByCategory,
-    createProduct
+    createProduct, 
+    updateProduct
 }
