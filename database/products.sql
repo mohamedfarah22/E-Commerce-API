@@ -10,7 +10,7 @@ CREATE TABLE products (
     available_quantity INTEGER,
     image_url VARCHAR
 );
-
+--create dummy product data
 INSERT INTO products (product_description, category, price, available_quantity, image_url)
 VALUES ('21 Carat necklace weighing 12 grams', 'necklaces', 4800.9, 10, 'www.necklace-images.com');
 
