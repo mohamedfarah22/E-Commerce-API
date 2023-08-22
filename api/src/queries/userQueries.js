@@ -1,3 +1,5 @@
+const { get } = require('../Routers/authRouter');
+
 const Pool = require('pg').Pool;
 
 const pool = new Pool({
@@ -29,7 +31,20 @@ const getUserByIdHelper = (id) => {
 }) 
 }
 
+const getUserById = async (req, res) => {
+    const userId = req.params.id
+    try{
+        const users = await getUserByIdHelper(userId)
+        res.status(200).json(users)
+    }
+    catch(e){
+        res.status(404).send(e)
+    }
+    
+}
+
 module.exports = {
     getUsers, 
-    getUserByIdHelper
+    getUserByIdHelper,
+    getUserById
 }
