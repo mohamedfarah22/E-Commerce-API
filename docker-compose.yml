@@ -10,5 +10,16 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - ${PWD}/database/:/docker-entrypoint-initdb.d
-
+      - ./database/:/docker-entrypoint-initdb.d
+  api:
+    container_name: ecomm-api-express
+    build: 
+      context: ./api
+      dockerfile: dockerfile
+    volumes:
+      - ./api:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
