@@ -1,6 +1,6 @@
 const Pool = require('pg').Pool;
 const bcrypt = require('bcryptjs')
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
 const pool = new Pool({
     user:"admin",
     password: "ecommdb",
@@ -50,36 +50,13 @@ const comparePasswords = async (password, hash) => {
 
     return false
 };
-//create local passport strategy
 
-const strategy = new LocalStrategy(function( email, password, done){
-    pool.query('SELECT * FROM users WHERE email = $1', [email], async function(err, results){
-        if(err){
-            return done(err)
-        }
 
-        if(results.rows.length === 0){
-            return done(null, false, {message: 'Incorrect email or password'})
-        }
 
-        const user = results.rows[0]
-
-        const passwordAuthenticated = await comparePasswords(password, user.password)
-
-        if(passwordAuthenticated){
-            return done(null, user)
-        }
-        else{
-            return done(null, false, {message: 'Incoreect password. '})
-        }
-
-    });
-
-})
 
 
 
 module.exports = {
     createUser, 
-    strategy
+    comparePasswords
 }

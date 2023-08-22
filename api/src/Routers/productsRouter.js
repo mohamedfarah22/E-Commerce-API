@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../queries/productQueries')
 
+
 //get all products
 router.get('/', db.getProducts);
 
