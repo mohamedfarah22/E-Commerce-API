@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../product-queries/product-queries')
+const db = require('../queries/productQueries')
+
 
 //get all products
 router.get('/', db.getProducts);

@@ -5,7 +5,7 @@ const port = 3000
 
 //require products router
 
-const productsRouter = require('./Routers/productRouter/productsRouter')
+const productsRouter = require('./src/Routers/productsRouter/productsRouter.js')
 
 //Mount the router at products path
 
