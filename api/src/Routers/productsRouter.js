@@ -6,9 +6,14 @@ const db = require('../queries/productQueries')
 //get all products
 router.get('/', db.getProducts);
 
+//get all categories
+router.get('/categories', db.getAllCategories)
+
+
 //get products by id
 
 router.get('/:id', db.getProductById)
+
 
 //get products by category
 
@@ -23,6 +28,5 @@ router.put('/:id', db.updateProduct)
 //delete existing product
 router.delete('/:id', db.deleteProduct)
 
-//get all categories
-router.get('/categories', db.getAllCategories)
+
 module.exports = router;
