@@ -105,5 +105,6 @@ module.exports ={
     getProductsByCategory,
     createProduct, 
     updateProduct,
-    deleteProduct
+    deleteProduct, 
+    getAllCategories
 }
