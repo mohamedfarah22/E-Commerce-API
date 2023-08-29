@@ -86,6 +86,19 @@ const deleteProduct = (req, res) => {
         res.status(200).send(`Product deleted with ID: ${id}`)
     })
 }
+
+//get unique categories from products
+
+const getAllCategories = (req, res) => {
+
+    pool.query('SELECT DISTINCT category FROM products', (error, results) => {
+        if(error){
+            throw(error)
+        }
+        res.status(200).send(results.rows)
+    })
+
+}
 module.exports ={
     getProducts,
     getProductById,
