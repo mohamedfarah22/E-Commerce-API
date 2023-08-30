@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 4000
+const cors = require('cors');
 const passport = require('passport')
 const session = require('express-session')
 //require products router
@@ -10,7 +11,8 @@ const productsRouter = require('./src/Routers/productsRouter.js')
 const authRouter = require('./src/Routers/authRouter.js')
 const usersRouter = require('./src/Routers/usersRouter.js')
 const cartsRouter = require('./src/Routers/cartRouter.js')
-
+//use cors
+app.use(cors());
 //use body parser
 app.use(bodyParser.json())
 
