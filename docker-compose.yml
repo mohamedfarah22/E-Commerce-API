@@ -36,3 +36,10 @@ services:
     depends_on:
       - api
       - database
+  image-server: 
+    container_name: image-container_name
+    build:
+      context: ./image-services
+      dockerfile: dockerfile
+    ports:
+      - "8080:80"
