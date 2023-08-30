@@ -23,3 +23,16 @@ services:
       - "4000:4000"
     depends_on:
       - database
+  frontend: 
+    container_name: ecomm-client-react
+    build:
+      context: ./client
+      dockerfile: dockerfile
+    volumes:
+      - ./client:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+      - database
